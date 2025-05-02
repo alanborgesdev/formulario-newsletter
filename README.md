@@ -47,7 +47,7 @@ Este é um projeto de Formulário de Newsletter com validação de campos, desen
 
 ## 📸 Screenshots
 
-![Preview do Projeto](./src/images/preview.png)
+![Preview do Projeto](./src/images/preview.gif)
 
 ## 📌 Autor  
 
