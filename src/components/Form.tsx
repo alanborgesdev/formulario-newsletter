@@ -1,47 +1,50 @@
 import { useState, FormEvent } from 'react';
-import { User } from "../types/user";
+import { User } from '../types/user';
 import { validate } from '../utils/validate';
 import Swal from 'sweetalert2';
 
 const Form = () => {
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
-    const [agree, setAgree] = useState(false);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [agree, setAgree] = useState(false);
 
-    const [errors, setErrors] = useState<Partial<{ name: string; email: string; agree: string }>>({});
+  const [errors, setErrors] = useState<
+    Partial<{ name: string; email: string; agree: string }>
+  >({});
 
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
 
-    const handleSubmit = (e: FormEvent) => {
-        e.preventDefault();
+    setErrors({});
 
-        setErrors({});
-
-        const data: User = {
-            name,
-            email,
-            agree,
-        };
-
-        const validateErrors = validate(data);
-
-        if (Object.keys(validateErrors).length > 0){
-            setErrors(validateErrors);
-            return;
-        }
-
-        setName("");
-        setEmail("");
-        setAgree(false);
-
-        Swal.fire({title:'Obrigado por se inscrever!',
-                    icon:'success',
-                    confirmButtonText:'OK',
-                    customClass: {
-                        confirmButton:'bg-slate-600 hover:bg-slate-500 text-white font-semibold px-4 py-2 rounded'
-                    },
-                    buttonsStyling:false,
-        });
+    const data: User = {
+      name,
+      email,
+      agree,
     };
+
+    const validateErrors = validate(data);
+
+    if (Object.keys(validateErrors).length > 0) {
+      setErrors(validateErrors);
+      return;
+    }
+
+    setName('');
+    setEmail('');
+    setAgree(false);
+
+    Swal.fire({
+      title: 'Obrigado por se inscrever!',
+      icon: 'success',
+      confirmButtonText: 'OK',
+      customClass: {
+        confirmButton:
+          'bg-slate-600 hover:bg-slate-500 text-white font-semibold px-4 py-2 rounded',
+      },
+      buttonsStyling: false,
+    });
+  };
 
   return (
     <form className='flex flex-col gap-3' onSubmit={handleSubmit}>
@@ -52,10 +55,12 @@ const Form = () => {
         <input
           type='text'
           placeholder='Digite o seu nome'
-          className='rounded-lg py-2 px-2 text-sm placeholder:text-sm placeholder:text-stone-400 bg-white border border-stone-300' value={name} onChange={(e) => setName(e.target.value)}
+          className='rounded-lg py-2 px-2 text-sm placeholder:text-sm placeholder:text-stone-400 bg-white border border-stone-300'
+          value={name}
+          onChange={(e) => setName(e.target.value)}
         />
         {errors?.name && (
-            <small className='text-xs text-red-500 mt-1'>{errors?.name}</small>
+          <small className='text-xs text-red-500 mt-1'>{errors?.name}</small>
         )}
       </div>
       <div className='flex flex-col'>
@@ -65,10 +70,12 @@ const Form = () => {
         <input
           type='email'
           placeholder='Insira seu melhor e-mail'
-          className='rounded-lg py-2 px-2 text-sm placeholder:text-sm placeholder:text-stone-400 bg-white border border-stone-300' value={email} onChange={(e) => setEmail(e.target.value)}
-          />
-          {errors?.email && (
-            <small className='text-xs text-red-500 mt-1'>{errors?.email}</small>
+          className='rounded-lg py-2 px-2 text-sm placeholder:text-sm placeholder:text-stone-400 bg-white border border-stone-300'
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        {errors?.email && (
+          <small className='text-xs text-red-500 mt-1'>{errors?.email}</small>
         )}
       </div>
       <div className='flex flex-col'>
@@ -76,13 +83,17 @@ const Form = () => {
           Leia os termos
         </a>
         <div className='flex gap-2 items-center'>
-          <input type='checkbox' checked={agree} onChange={(e) => setAgree(e.target.checked)}/>
+          <input
+            type='checkbox'
+            checked={agree}
+            onChange={(e) => setAgree(e.target.checked)}
+          />
           <label className='text-sm' htmlFor='agree'>
             Concordo com os termos
           </label>
         </div>
         {errors?.agree && (
-            <small className='text-xs text-red-500 mt-1'>{errors?.agree}</small>
+          <small className='text-xs text-red-500 mt-1'>{errors?.agree}</small>
         )}
       </div>
       <button
