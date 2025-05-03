@@ -1,6 +1,7 @@
 import { useState, FormEvent } from 'react';
 import { User } from "../types/user";
 import { validate } from '../utils/validate';
+import Swal from 'sweetalert2';
 
 const Form = () => {
     const [name, setName] = useState("");
@@ -32,7 +33,14 @@ const Form = () => {
         setEmail("");
         setAgree(false);
 
-        alert("Obrigado por se inscrever!")
+        Swal.fire({title:'Obrigado por se inscrever!',
+                    icon:'success',
+                    confirmButtonText:'OK',
+                    customClass: {
+                        confirmButton:'bg-slate-600 hover:bg-slate-500 text-white font-semibold px-4 py-2 rounded'
+                    },
+                    buttonsStyling:false,
+        });
     };
 
   return (
