@@ -6,7 +6,6 @@ Este é um projeto de Formulário de Newsletter com validação de campos, desen
 
 ## 📌 Tecnologias Utilizadas
 
-- React
 - TypeScript
 - Tailwind CSS
 - Vite
