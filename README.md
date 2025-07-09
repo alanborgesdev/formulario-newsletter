@@ -1,5 +1,7 @@
 # Formulário de Newsletter
 
+![MIT License](https://img.shields.io/badge/license-MIT-green)
+
 ## Descrição
 
 Este é um projeto de Formulário de Newsletter com validação de campos, desenvolvido utilizando React, TypeScript e Tailwind CSS. Ele valida nome, e-mail e aceitação dos termos antes de submeter.
@@ -52,3 +54,7 @@ Este é um projeto de Formulário de Newsletter com validação de campos, desen
 ## 📌 Autor  
 
 Projeto desenvolvido por **[Alan Borges](https://github.com/alanborgesdev)**.
+
+## 📝 Licença
+
+O código-fonte deste projeto está sob a licença MIT.
